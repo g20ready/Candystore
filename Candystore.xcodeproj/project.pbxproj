@@ -60,6 +60,7 @@
 		13306E541DB2287C0042B5AA /* UIColor+AppColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
 		13306E551DB2287C0042B5AA /* UIColor+AppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
 		13306E581DB22AE70042B5AA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		13306E5A1DB2333F0042B5AA /* Definitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
 		217CF8CD7474FFE44C90A6BA /* Pods-CandystoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CandystoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CandystoreTests/Pods-CandystoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		467F2CE4FD911D0274E89B69 /* libPods-CandystoreUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CandystoreUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		747C8ED37B0B5D9B9465AC94 /* libPods-Candystore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Candystore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +103,7 @@
 		13306E141DB2246C0042B5AA = {
 			isa = PBXGroup;
 			children = (
+				13306E5A1DB2333F0042B5AA /* Definitions.h */,
 				13306E1F1DB2246C0042B5AA /* Candystore */,
 				13306E391DB2246D0042B5AA /* CandystoreTests */,
 				13306E441DB2246D0042B5AA /* CandystoreUITests */,
