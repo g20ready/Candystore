@@ -16,6 +16,10 @@
 		13306E3B1DB2246D0042B5AA /* CandystoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13306E3A1DB2246D0042B5AA /* CandystoreTests.m */; };
 		13306E461DB2246D0042B5AA /* CandystoreUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13306E451DB2246D0042B5AA /* CandystoreUITests.m */; };
 		13306E561DB2287C0042B5AA /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 13306E551DB2287C0042B5AA /* UIColor+AppColors.m */; };
+		13306E591DB22AE70042B5AA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13306E581DB22AE70042B5AA /* CoreLocation.framework */; };
+		62CB30A2512265034F6C0E77 /* libPods-Candystore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 747C8ED37B0B5D9B9465AC94 /* libPods-Candystore.a */; };
+		96BE05C97D1C8911D79405E6 /* libPods-CandystoreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6444DF2AC6358CD516F5E1 /* libPods-CandystoreTests.a */; };
+		D701F9AE75E3851C015B4258 /* libPods-CandystoreUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2CE4FD911D0274E89B69 /* libPods-CandystoreUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01DAB9262DC7D1A7FA75FD21 /* Pods-Candystore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Candystore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Candystore/Pods-Candystore.debug.xcconfig"; sourceTree = "<group>"; };
 		13306E1D1DB2246C0042B5AA /* Candystore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Candystore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13306E211DB2246C0042B5AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		13306E231DB2246C0042B5AA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +59,15 @@
 		13306E471DB2246D0042B5AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13306E541DB2287C0042B5AA /* UIColor+AppColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
 		13306E551DB2287C0042B5AA /* UIColor+AppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
+		13306E581DB22AE70042B5AA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		217CF8CD7474FFE44C90A6BA /* Pods-CandystoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CandystoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CandystoreTests/Pods-CandystoreTests.debug.xcconfig"; sourceTree = "<group>"; };
+		467F2CE4FD911D0274E89B69 /* libPods-CandystoreUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CandystoreUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		747C8ED37B0B5D9B9465AC94 /* libPods-Candystore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Candystore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A26B237378582757C518375 /* Pods-CandystoreUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CandystoreUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CandystoreUITests/Pods-CandystoreUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AFA24E88BF652447A4559F9F /* Pods-CandystoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CandystoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CandystoreTests/Pods-CandystoreTests.release.xcconfig"; sourceTree = "<group>"; };
+		F5E327AB0CB5E5EBDAD6C38E /* Pods-CandystoreUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CandystoreUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CandystoreUITests/Pods-CandystoreUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FC9ABB1D60ABDFA6E8330517 /* Pods-Candystore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Candystore.release.xcconfig"; path = "Pods/Target Support Files/Pods-Candystore/Pods-Candystore.release.xcconfig"; sourceTree = "<group>"; };
+		FF6444DF2AC6358CD516F5E1 /* libPods-CandystoreTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CandystoreTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13306E591DB22AE70042B5AA /* CoreLocation.framework in Frameworks */,
+				62CB30A2512265034F6C0E77 /* libPods-Candystore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96BE05C97D1C8911D79405E6 /* libPods-CandystoreTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D701F9AE75E3851C015B4258 /* libPods-CandystoreUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +106,8 @@
 				13306E391DB2246D0042B5AA /* CandystoreTests */,
 				13306E441DB2246D0042B5AA /* CandystoreUITests */,
 				13306E1E1DB2246C0042B5AA /* Products */,
+				13306E571DB22AE70042B5AA /* Frameworks */,
+				648BF8D64DEECC7AEC30ACCE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +165,30 @@
 			path = CandystoreUITests;
 			sourceTree = "<group>";
 		};
+		13306E571DB22AE70042B5AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13306E581DB22AE70042B5AA /* CoreLocation.framework */,
+				747C8ED37B0B5D9B9465AC94 /* libPods-Candystore.a */,
+				FF6444DF2AC6358CD516F5E1 /* libPods-CandystoreTests.a */,
+				467F2CE4FD911D0274E89B69 /* libPods-CandystoreUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		648BF8D64DEECC7AEC30ACCE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01DAB9262DC7D1A7FA75FD21 /* Pods-Candystore.debug.xcconfig */,
+				FC9ABB1D60ABDFA6E8330517 /* Pods-Candystore.release.xcconfig */,
+				217CF8CD7474FFE44C90A6BA /* Pods-CandystoreTests.debug.xcconfig */,
+				AFA24E88BF652447A4559F9F /* Pods-CandystoreTests.release.xcconfig */,
+				F5E327AB0CB5E5EBDAD6C38E /* Pods-CandystoreUITests.debug.xcconfig */,
+				8A26B237378582757C518375 /* Pods-CandystoreUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,9 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13306E4A1DB2246D0042B5AA /* Build configuration list for PBXNativeTarget "Candystore" */;
 			buildPhases = (
+				678F5946146E9D95BAF564DA /* [CP] Check Pods Manifest.lock */,
 				13306E191DB2246C0042B5AA /* Sources */,
 				13306E1A1DB2246C0042B5AA /* Frameworks */,
 				13306E1B1DB2246C0042B5AA /* Resources */,
+				FDD5C213E968F415A1C15B58 /* [CP] Embed Pods Frameworks */,
+				B5995BC1213524E5AD4496E0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13306E4D1DB2246D0042B5AA /* Build configuration list for PBXNativeTarget "CandystoreTests" */;
 			buildPhases = (
+				E21480D1B4C4CA046B4A53F0 /* [CP] Check Pods Manifest.lock */,
 				13306E321DB2246D0042B5AA /* Sources */,
 				13306E331DB2246D0042B5AA /* Frameworks */,
 				13306E341DB2246D0042B5AA /* Resources */,
+				32A1B34D70D6A0C82D51D9FA /* [CP] Embed Pods Frameworks */,
+				370C6DE8570FB8780E8D1310 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -187,9 +237,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13306E501DB2246D0042B5AA /* Build configuration list for PBXNativeTarget "CandystoreUITests" */;
 			buildPhases = (
+				59FFFD6FF7DB1C7214A194E3 /* [CP] Check Pods Manifest.lock */,
 				13306E3D1DB2246D0042B5AA /* Sources */,
 				13306E3E1DB2246D0042B5AA /* Frameworks */,
 				13306E3F1DB2246D0042B5AA /* Resources */,
+				AE7B6249B8961379088B8275 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,6 +324,129 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32A1B34D70D6A0C82D51D9FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CandystoreTests/Pods-CandystoreTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		370C6DE8570FB8780E8D1310 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CandystoreTests/Pods-CandystoreTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59FFFD6FF7DB1C7214A194E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		678F5946146E9D95BAF564DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AE7B6249B8961379088B8275 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CandystoreUITests/Pods-CandystoreUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5995BC1213524E5AD4496E0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Candystore/Pods-Candystore-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E21480D1B4C4CA046B4A53F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FDD5C213E968F415A1C15B58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Candystore/Pods-Candystore-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		13306E191DB2246C0042B5AA /* Sources */ = {
@@ -426,6 +601,7 @@
 		};
 		13306E4B1DB2246D0042B5AA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01DAB9262DC7D1A7FA75FD21 /* Pods-Candystore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
@@ -438,6 +614,7 @@
 		};
 		13306E4C1DB2246D0042B5AA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC9ABB1D60ABDFA6E8330517 /* Pods-Candystore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
@@ -450,6 +627,7 @@
 		};
 		13306E4E1DB2246D0042B5AA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 217CF8CD7474FFE44C90A6BA /* Pods-CandystoreTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CandystoreTests/Info.plist;
@@ -462,6 +640,7 @@
 		};
 		13306E4F1DB2246D0042B5AA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AFA24E88BF652447A4559F9F /* Pods-CandystoreTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CandystoreTests/Info.plist;
@@ -474,6 +653,7 @@
 		};
 		13306E511DB2246D0042B5AA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5E327AB0CB5E5EBDAD6C38E /* Pods-CandystoreUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = CandystoreUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -485,6 +665,7 @@
 		};
 		13306E521DB2246D0042B5AA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A26B237378582757C518375 /* Pods-CandystoreUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = CandystoreUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
