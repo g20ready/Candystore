@@ -15,6 +15,7 @@
 		13306E301DB2246C0042B5AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13306E2E1DB2246C0042B5AA /* LaunchScreen.storyboard */; };
 		13306E3B1DB2246D0042B5AA /* CandystoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13306E3A1DB2246D0042B5AA /* CandystoreTests.m */; };
 		13306E461DB2246D0042B5AA /* CandystoreUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13306E451DB2246D0042B5AA /* CandystoreUITests.m */; };
+		13306E561DB2287C0042B5AA /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 13306E551DB2287C0042B5AA /* UIColor+AppColors.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		13306E411DB2246D0042B5AA /* CandystoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CandystoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13306E451DB2246D0042B5AA /* CandystoreUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CandystoreUITests.m; sourceTree = "<group>"; };
 		13306E471DB2246D0042B5AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13306E541DB2287C0042B5AA /* UIColor+AppColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColors.h"; sourceTree = "<group>"; };
+		13306E551DB2287C0042B5AA /* UIColor+AppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 				13306E2E1DB2246C0042B5AA /* LaunchScreen.storyboard */,
 				13306E311DB2246C0042B5AA /* Info.plist */,
 				13306E201DB2246C0042B5AA /* Supporting Files */,
+				13306E541DB2287C0042B5AA /* UIColor+AppColors.h */,
+				13306E551DB2287C0042B5AA /* UIColor+AppColors.m */,
 			);
 			path = Candystore;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13306E281DB2246C0042B5AA /* ViewController.m in Sources */,
+				13306E561DB2287C0042B5AA /* UIColor+AppColors.m in Sources */,
 				13306E251DB2246C0042B5AA /* AppDelegate.m in Sources */,
 				13306E221DB2246C0042B5AA /* main.m in Sources */,
 			);
