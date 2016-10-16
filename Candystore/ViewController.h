@@ -11,7 +11,7 @@
 
 #import "Utils.h"
 #import "UIColor+AppColors.h"
-
+#import "NetworkManager.h"
 
 @import GoogleMaps;
 @import GooglePlaces;

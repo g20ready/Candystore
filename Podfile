@@ -3,8 +3,7 @@
 
 target 'Candystore' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
-
+#  use_frameworks!
 
   # Pods for Candystore
   pod 'GoogleMaps'
