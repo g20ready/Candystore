@@ -7,9 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController : UIViewController
+#import "Utils.h"
+#import "UIColor+AppColors.h"
 
+
+@import GoogleMaps;
+@import GooglePlaces;
+
+@interface ViewController : UIViewController <CLLocationManagerDelegate, GMSMapViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *latitudeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *longitudeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *currentLocationImageView;
+@property (weak, nonatomic) IBOutlet UILabel *currentLocationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UIView *addressView;
+
+@property CLLocationManager *locationManager;
+@property (weak, nonatomic) IBOutlet UIView *mapContainerView;
 
 @end
 

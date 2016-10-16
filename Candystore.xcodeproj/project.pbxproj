@@ -17,6 +17,8 @@
 		13306E461DB2246D0042B5AA /* CandystoreUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13306E451DB2246D0042B5AA /* CandystoreUITests.m */; };
 		13306E561DB2287C0042B5AA /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 13306E551DB2287C0042B5AA /* UIColor+AppColors.m */; };
 		13306E591DB22AE70042B5AA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13306E581DB22AE70042B5AA /* CoreLocation.framework */; };
+		13DC81A21DB3A0D3003B6B3F /* SwiftManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC81A11DB3A0D3003B6B3F /* SwiftManager.swift */; };
+		13E853631DB2A5400088863D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E853621DB2A5400088863D /* Utils.m */; };
 		62CB30A2512265034F6C0E77 /* libPods-Candystore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 747C8ED37B0B5D9B9465AC94 /* libPods-Candystore.a */; };
 		96BE05C97D1C8911D79405E6 /* libPods-CandystoreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF6444DF2AC6358CD516F5E1 /* libPods-CandystoreTests.a */; };
 		D701F9AE75E3851C015B4258 /* libPods-CandystoreUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 467F2CE4FD911D0274E89B69 /* libPods-CandystoreUITests.a */; };
@@ -61,6 +63,10 @@
 		13306E551DB2287C0042B5AA /* UIColor+AppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
 		13306E581DB22AE70042B5AA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		13306E5A1DB2333F0042B5AA /* Definitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
+		13DC81A11DB3A0D3003B6B3F /* SwiftManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftManager.swift; sourceTree = "<group>"; };
+		13DC81AC1DB3B6AA003B6B3F /* Candystore-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Candystore-Bridging-Header.h"; sourceTree = "<group>"; };
+		13E853611DB2A5400088863D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		13E853621DB2A5400088863D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		217CF8CD7474FFE44C90A6BA /* Pods-CandystoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CandystoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CandystoreTests/Pods-CandystoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		467F2CE4FD911D0274E89B69 /* libPods-CandystoreUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CandystoreUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		747C8ED37B0B5D9B9465AC94 /* libPods-Candystore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Candystore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +132,9 @@
 		13306E1F1DB2246C0042B5AA /* Candystore */ = {
 			isa = PBXGroup;
 			children = (
+				13DC81AB1DB3AA13003B6B3F /* Helpers */,
+				13DC81A71DB3A92E003B6B3F /* Model */,
+				13DC81A31DB3A0DD003B6B3F /* Swift */,
 				13306E231DB2246C0042B5AA /* AppDelegate.h */,
 				13306E241DB2246C0042B5AA /* AppDelegate.m */,
 				13306E261DB2246C0042B5AA /* ViewController.h */,
@@ -137,6 +146,8 @@
 				13306E201DB2246C0042B5AA /* Supporting Files */,
 				13306E541DB2287C0042B5AA /* UIColor+AppColors.h */,
 				13306E551DB2287C0042B5AA /* UIColor+AppColors.m */,
+				13E853611DB2A5400088863D /* Utils.h */,
+				13E853621DB2A5400088863D /* Utils.m */,
 			);
 			path = Candystore;
 			sourceTree = "<group>";
@@ -176,6 +187,29 @@
 				467F2CE4FD911D0274E89B69 /* libPods-CandystoreUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		13DC81A31DB3A0DD003B6B3F /* Swift */ = {
+			isa = PBXGroup;
+			children = (
+				13DC81AC1DB3B6AA003B6B3F /* Candystore-Bridging-Header.h */,
+				13DC81A11DB3A0D3003B6B3F /* SwiftManager.swift */,
+			);
+			name = Swift;
+			sourceTree = "<group>";
+		};
+		13DC81A71DB3A92E003B6B3F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		13DC81AB1DB3AA13003B6B3F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		648BF8D64DEECC7AEC30ACCE /* Pods */ = {
@@ -266,6 +300,7 @@
 				TargetAttributes = {
 					13306E1C1DB2246C0042B5AA = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					13306E351DB2246D0042B5AA = {
@@ -458,7 +493,9 @@
 				13306E281DB2246C0042B5AA /* ViewController.m in Sources */,
 				13306E561DB2287C0042B5AA /* UIColor+AppColors.m in Sources */,
 				13306E251DB2246C0042B5AA /* AppDelegate.m in Sources */,
+				13E853631DB2A5400088863D /* Utils.m in Sources */,
 				13306E221DB2246C0042B5AA /* main.m in Sources */,
+				13DC81A21DB3A0D3003B6B3F /* SwiftManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,11 +643,16 @@
 			baseConfigurationReference = 01DAB9262DC7D1A7FA75FD21 /* Pods-Candystore.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Candystore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = max.Candystore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Candystore/Candystore-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -619,11 +661,15 @@
 			baseConfigurationReference = FC9ABB1D60ABDFA6E8330517 /* Pods-Candystore.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Candystore/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = max.Candystore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Candystore/Candystore-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -631,6 +677,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 217CF8CD7474FFE44C90A6BA /* Pods-CandystoreTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CandystoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -644,6 +691,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AFA24E88BF652447A4559F9F /* Pods-CandystoreTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CandystoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -657,6 +705,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F5E327AB0CB5E5EBDAD6C38E /* Pods-CandystoreUITests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CandystoreUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = max.CandystoreUITests;
@@ -669,6 +718,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8A26B237378582757C518375 /* Pods-CandystoreUITests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CandystoreUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = max.CandystoreUITests;

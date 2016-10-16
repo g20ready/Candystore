@@ -10,11 +10,10 @@
 
 @interface UIColor (AppColors)
 
-+ (UIColor*) lightGreen;
-+ (UIColor*) darkGreen;
++ (UIColor*) greenLight;
++ (UIColor*) greenDark;
++ (UIColor*) bordeauxDark;
++ (UIColor*) bordeauxLight;
 + (UIColor*) cyan;
-+ (UIColor*) bordeaux;
-+ (UIColor*) pink;
-
 
 @end

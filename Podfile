@@ -9,6 +9,9 @@ target 'Candystore' do
   # Pods for Candystore
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  
+  pod 'AFNetworking', '~> 3.0'
+  pod 'JSONModel'
 
   target 'CandystoreTests' do
     inherit! :search_paths

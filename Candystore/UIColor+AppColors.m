@@ -10,38 +10,38 @@
 
 @implementation UIColor(AppColors)
 
-+ (UIColor*) lightGreen {
-    return [UIColor colorWithRed:91.0/255.0
-                           green:198.0/255.0
-                            blue:155.0/255.0
++ (UIColor*) greenLight {
+    return [UIColor colorWithRed:69.0/255.0
+                           green:135.0/255.0
+                            blue:103.0/255.0
                            alpha:1.0];
 }
 
-+ (UIColor*) darkGreen {
-    return [UIColor colorWithRed:91.0/255.0
-                           green:198.0/255.0
-                            blue:155.0/255.0
++ (UIColor*) greenDark {
+    return [UIColor colorWithRed:55.0/255.0
+                           green:126.0/255.0
+                            blue:91.0/255.0
+                           alpha:1.0];
+}
+
++ (UIColor*) bordeauxDark {
+    return [UIColor colorWithRed:117.0/255.0
+                           green:42.0/255.0
+                            blue:34.0/255.0
+                           alpha:1.0];
+}
+
++ (UIColor*) bordeauxLight {
+    return [UIColor colorWithRed:198.0/255.0
+                           green:115.0/255.0
+                            blue:99.0/255.0
                            alpha:1.0];
 }
 
 + (UIColor*) cyan {
-    return [UIColor colorWithRed:143.0/255.0
+    return [UIColor colorWithRed:152.0/255.0
                            green:255.0/255.0
-                            blue:210.0/255.0
-                           alpha:1.0];
-}
-
-+ (UIColor*) bordeaux {
-    return [UIColor colorWithRed:122.0/255.0
-                           green:46.0/255.0
-                            blue:31.0/255.0
-                           alpha:1.0];
-}
-
-+ (UIColor*) pink {
-    return [UIColor colorWithRed:198.0/255.0
-                           green:115.0/255.0
-                            blue:99.0/255.0
+                            blue:207.0/255.0
                            alpha:1.0];
 }
 
