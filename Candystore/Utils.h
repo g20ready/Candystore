@@ -13,4 +13,6 @@
 
 + (void)setStatusBarBackgroundColor:(UIColor *)color;
 
++ (UIImage *)imageWithBackgroundImage:(UIImage *)image andForegroundImage:(UIImage *)image;
+
 @end

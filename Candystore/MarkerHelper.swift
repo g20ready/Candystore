@@ -12,6 +12,8 @@ import GoogleMaps
 
 @objc public class MarkerHelper : NSObject {
     
+    static var images = [String: UIImage]()
+    
     static var iconVenue: UIImage {
         return UIImage.init(named: "ico-venue")!
     }
@@ -26,13 +28,47 @@ import GoogleMaps
         return marker
     }
     
-    public static func getCandyStoreMarker(
-        coordinate: CLLocationCoordinate2D, object: Any?) -> GMSMarker {
-        let marker = GMSMarker(position: coordinate)
-        marker.icon = iconVenue
-        marker.userData = object
-        return marker
+    static func getCategoryIconUrl(category: FSVenueCategoryDTO) -> (String) {
+        return category.icon.prefix + "88" + category.icon.suffix
     }
+    
+    public static func getCandyStoreMarker(
+        coordinate: CLLocationCoordinate2D, venue: FSVenueDTO!, onMarkerReady: @escaping (GMSMarker) -> Void) {
+        let userData: NSMutableDictionary = NSMutableDictionary()
+        userData["venue"] = venue
+        if (venue.categories != nil && venue.categories.count > 0) {
+            let category = venue.categories.first! as! FSVenueCategoryDTO
+            let imageUrl = self.getCategoryIconUrl(category: category)
+            downloadImage(imageUrl: imageUrl, onImageDownloaded: {
+                (image) in
+                DispatchQueue.main.async {
+                    
+                    let icon = Utils.image(withBackgroundImage: iconVenue, andForegroundImage: image)
+                    let iconSelected = Utils.image(withBackgroundImage: iconVenueSelected, andForegroundImage: image)
+                    userData["icon"] = icon
+                    userData["iconSelected"] = iconSelected
+                    
+                    let marker = GMSMarker(position: coordinate)
+                    marker.userData = userData
+                    marker.icon = icon
+                    onMarkerReady(marker)
+                }
+            })
+        }
+    }
+    
+    public static func downloadImage(imageUrl: String, onImageDownloaded: @escaping (UIImage) -> Void) {
+        let url = URL(string: imageUrl)
+        SDWebImageDownloader.shared().downloadImage(
+            with: url, options: SDWebImageDownloaderOptions(rawValue: UInt(0x0)), progress: nil, completed:{
+                (image, data, err, finished) in
+                if (err != nil) {
+                    return
+                }
+                onImageDownloaded(image!)
+        })
+    }
+    
     
     
 }

@@ -28,9 +28,9 @@
 		13DC81B31DB3BA90003B6B3F /* FSBaseResponseDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DC81B21DB3BA90003B6B3F /* FSBaseResponseDTO.m */; };
 		13DC81B61DB3BB5F003B6B3F /* FSVenuesResponseDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DC81B51DB3BB5F003B6B3F /* FSVenuesResponseDTO.m */; };
 		13E853631DB2A5400088863D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E853621DB2A5400088863D /* Utils.m */; };
-		204BEAA602809C2055038F73 /* libPods-Candystore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D18A91099FA930ACC7556E8 /* libPods-Candystore.a */; };
-		C4F3179EC39AF153FDBB10B8 /* libPods-CandystoreUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C65E5E2AAA181FDEC19843C0 /* libPods-CandystoreUITests.a */; };
-		F379F281A3561C46A45A2FF3 /* libPods-CandystoreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87183C5CBF209104E82405F5 /* libPods-CandystoreTests.a */; };
+		1B2EE8F1FC91A2E8BE7101EB /* libPods-CandystoreUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC4E34557051AF0A699A8F /* libPods-CandystoreUITests.a */; };
+		98F94686A3DFC42F97A93C35 /* libPods-CandystoreTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC6DEA2EA8629CBA325B1BF /* libPods-CandystoreTests.a */; };
+		B9C65A53D0FCE065808FA102 /* libPods-Candystore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E68F991DC4556615A32D3930 /* libPods-Candystore.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,11 +93,11 @@
 		13E853611DB2A5400088863D /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		13E853621DB2A5400088863D /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		217CF8CD7474FFE44C90A6BA /* Pods-CandystoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CandystoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CandystoreTests/Pods-CandystoreTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4D18A91099FA930ACC7556E8 /* libPods-Candystore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Candystore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		87183C5CBF209104E82405F5 /* libPods-CandystoreTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CandystoreTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BAC4E34557051AF0A699A8F /* libPods-CandystoreUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CandystoreUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A26B237378582757C518375 /* Pods-CandystoreUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CandystoreUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CandystoreUITests/Pods-CandystoreUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9FC6DEA2EA8629CBA325B1BF /* libPods-CandystoreTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CandystoreTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFA24E88BF652447A4559F9F /* Pods-CandystoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CandystoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CandystoreTests/Pods-CandystoreTests.release.xcconfig"; sourceTree = "<group>"; };
-		C65E5E2AAA181FDEC19843C0 /* libPods-CandystoreUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CandystoreUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E68F991DC4556615A32D3930 /* libPods-Candystore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Candystore.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E327AB0CB5E5EBDAD6C38E /* Pods-CandystoreUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CandystoreUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CandystoreUITests/Pods-CandystoreUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FC9ABB1D60ABDFA6E8330517 /* Pods-Candystore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Candystore.release.xcconfig"; path = "Pods/Target Support Files/Pods-Candystore/Pods-Candystore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,7 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13306E591DB22AE70042B5AA /* CoreLocation.framework in Frameworks */,
-				204BEAA602809C2055038F73 /* libPods-Candystore.a in Frameworks */,
+				B9C65A53D0FCE065808FA102 /* libPods-Candystore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F379F281A3561C46A45A2FF3 /* libPods-CandystoreTests.a in Frameworks */,
+				98F94686A3DFC42F97A93C35 /* libPods-CandystoreTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4F3179EC39AF153FDBB10B8 /* libPods-CandystoreUITests.a in Frameworks */,
+				1B2EE8F1FC91A2E8BE7101EB /* libPods-CandystoreUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +144,10 @@
 		131AD2C91DB4371600536068 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				13306E541DB2287C0042B5AA /* UIColor+AppColors.h */,
+				13306E551DB2287C0042B5AA /* UIColor+AppColors.m */,
+				13E853611DB2A5400088863D /* Utils.h */,
+				13E853621DB2A5400088863D /* Utils.m */,
 				131AD2C41DB40BEC00536068 /* MarkerHelper.swift */,
 				131AD2CA1DB4375300536068 /* DeviceUtils.swift */,
 			);
@@ -180,7 +184,6 @@
 				131AD2C91DB4371600536068 /* Utils */,
 				131AD2C61DB4338100536068 /* UI */,
 				1380F4891DB3CC2900B86092 /* Core */,
-				13DC81AB1DB3AA13003B6B3F /* Helpers */,
 				13DC81A71DB3A92E003B6B3F /* Model */,
 				13306E231DB2246C0042B5AA /* AppDelegate.h */,
 				13306E241DB2246C0042B5AA /* AppDelegate.m */,
@@ -189,10 +192,6 @@
 				13306E2E1DB2246C0042B5AA /* LaunchScreen.storyboard */,
 				13306E311DB2246C0042B5AA /* Info.plist */,
 				13306E201DB2246C0042B5AA /* Supporting Files */,
-				13306E541DB2287C0042B5AA /* UIColor+AppColors.h */,
-				13306E551DB2287C0042B5AA /* UIColor+AppColors.m */,
-				13E853611DB2A5400088863D /* Utils.h */,
-				13E853621DB2A5400088863D /* Utils.m */,
 			);
 			path = Candystore;
 			sourceTree = "<group>";
@@ -227,9 +226,9 @@
 			isa = PBXGroup;
 			children = (
 				13306E581DB22AE70042B5AA /* CoreLocation.framework */,
-				4D18A91099FA930ACC7556E8 /* libPods-Candystore.a */,
-				87183C5CBF209104E82405F5 /* libPods-CandystoreTests.a */,
-				C65E5E2AAA181FDEC19843C0 /* libPods-CandystoreUITests.a */,
+				E68F991DC4556615A32D3930 /* libPods-Candystore.a */,
+				9FC6DEA2EA8629CBA325B1BF /* libPods-CandystoreTests.a */,
+				7BAC4E34557051AF0A699A8F /* libPods-CandystoreUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -249,13 +248,6 @@
 				13DC81AD1DB3B9DC003B6B3F /* DTO */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		13DC81AB1DB3AA13003B6B3F /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helpers;
 			sourceTree = "<group>";
 		};
 		13DC81AD1DB3B9DC003B6B3F /* DTO */ = {

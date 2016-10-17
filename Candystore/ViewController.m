@@ -133,32 +133,38 @@
             NSLog(@"Error fetching candy stores : %@", error.localizedDescription);
             return;
         }
-        [venues enumerateObjectsUsingBlock:^(FSVenueDTO * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        for (FSVenueDTO *venue in venues) {
             CLLocationCoordinate2D coord =
-            CLLocationCoordinate2DMake([obj.location.lat doubleValue],
-                                       [obj.location.lng doubleValue]);
-            GMSMarker *marker = [MarkerHelper getCandyStoreMarkerWithCoordinate:coord
-                                                                         object:obj];
-            marker.map = mapView;
-        }];
+            CLLocationCoordinate2DMake([venue.location.lat doubleValue],
+                                       [venue.location.lng doubleValue]);
+            [MarkerHelper getCandyStoreMarkerWithCoordinate:coord
+                                                      venue:venue
+                                              onMarkerReady:^(GMSMarker * _Nonnull marker) {
+                                                  marker.map = mapView;
+                                                  NSLog(@"userData 1 : %@", marker.userData);
+                                              }];
+        }
+//        [venues enumerateObjectsUsingBlock:^(FSVenueDTO * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            
+//        }];
     }];
 }
 
 - (void) unhighlightMarkerIfNeeded {
     if (self.selectedMarker) {
-        self.selectedMarker.icon = [MarkerHelper iconVenue];
+        NSMutableDictionary *dict = [self.selectedMarker userData];
+        self.selectedMarker.icon = [dict objectForKey:@"icon"];
         self.selectedMarker = nil;
     }
-    //todo: remove details view
 }
 
 - (void) highlightMarker:(GMSMarker *)marker {
-    NSLog(@"highlightMarker");
     if (marker) {
-        NSLog(@"highlightMarker - 1");
-        marker.icon = [MarkerHelper iconVenueSelected];
+        NSLog(@"userData : %@", marker.userData);
+        NSMutableDictionary *userData = marker.userData;
+        marker.icon = [userData objectForKey:@"iconSelected"];
         self.selectedMarker = marker;
-        self.venueDetailsViewController.venue = marker.userData;
+        self.venueDetailsViewController.venue = [userData objectForKey:@"venue"];
     }
 }
 

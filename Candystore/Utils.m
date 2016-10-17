@@ -18,4 +18,16 @@
     }
 }
 
++ (UIImage *)imageWithBackgroundImage:(UIImage *)bgImage andForegroundImage:(UIImage *)fgImage {
+    CGSize imageSize = bgImage.size;
+    
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0.0);
+    [bgImage drawInRect:CGRectMake(0, 0, imageSize.width, imageSize.height)];
+    float minDimension = imageSize.width > imageSize.height ? imageSize.height : imageSize.width;
+    [fgImage drawInRect:CGRectMake(0, 0, minDimension, minDimension)];
+    UIImage *resImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return resImage;
+}
+
 @end

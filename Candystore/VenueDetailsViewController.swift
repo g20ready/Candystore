@@ -24,6 +24,7 @@ class VenueDetailsViewController: UIViewController {
         }
     }
     
+    var venueDetailsDataTask: URLSessionDataTask!
     
     // MARK: - IBOutlets
     
@@ -88,6 +89,14 @@ class VenueDetailsViewController: UIViewController {
         self.ratingActivityIndicator.startAnimating()
     }
     
+    func cancelRequestIfNeeded() {
+        if (self.venueDetailsDataTask != nil &&
+            self.venueDetailsDataTask.state == URLSessionDataTask.State.running) {
+            self.venueDetailsDataTask.cancel()
+            self.venueDetailsDataTask = nil
+        }
+    }
+    
     func refreshUI() {
         resetUI()
         if (self.venue != nil) {
@@ -98,7 +107,8 @@ class VenueDetailsViewController: UIViewController {
             }else {
                 self.categoryLabel.text = nil
             }
-            NetworkManager.shared().fetchVenueDetails(self.venue.id, completion:
+            self.cancelRequestIfNeeded()
+            self.venueDetailsDataTask = NetworkManager.shared().fetchVenueDetails(self.venue.id, completion:
                 { (venueDetails, err) in
                     if (err != nil) {
                         self.venueActivityIndicator.stopAnimating()
