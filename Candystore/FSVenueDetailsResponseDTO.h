@@ -8,17 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "FSBaseResponseDTO.h"
-#import "FSVenueLocationDTO.h"
-#import "FSVenueCategoryDTO.h"
+#import "FSVenuesResponseDTO.h"
+#import "FSPhotosDataDTO.h"
 #import "JSONModel.h"
 
-@interface FSVeuneDetailsDTO : JSONModel
 
-@property (nonatomic, strong) NSString *id;
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) FSVenueLocationDTO *location;
-@property (nonatomic, strong) NSArray<FSVenueCategoryDTO> *categories;
-@property (nonatomic, strong) NSNumber *rating;
+@interface FSVeuneDetailsDTO : FSVenueDTO
+
+@property (nonatomic, strong) NSNumber<Optional> *rating;
+@property (nonatomic, strong) FSPhotosDataDTO *photos;
 
 @end
 

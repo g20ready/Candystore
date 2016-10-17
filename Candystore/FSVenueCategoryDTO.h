@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JSONModel.h"
 
+
 @interface FSVenueCategoryIconDTO : JSONModel
 
 @property (nonatomic, strong) NSString *prefix;

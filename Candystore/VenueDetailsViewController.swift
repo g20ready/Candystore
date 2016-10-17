@@ -8,17 +8,40 @@
 
 import UIKit
 
+
 class VenueDetailsViewController: UIViewController {
 
+    // MARK: - Properties
+    var venue: FSVenueDTO! {
+        didSet (newVenue) {
+            self.refreshUI()
+        }
+    }
+    
+    var venueDetails: FSVeuneDetailsDTO! {
+        didSet (newValue) {
+            self.refreshDetails()
+        }
+    }
+    
+    
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var venueImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var venueActivityIndicator: UIActivityIndicatorView!
+    @IBOutlet var ratingActivityIndicator: UIActivityIndicatorView!
+    
+    
+    // MARK: - Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        self.resetUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,19 +49,8 @@ class VenueDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
-    
-    //Mark: - Functions
+    // MARK: - Functions
     func setup() {
         self.setupTitleLabel()
         self.setupRatingLabel()
@@ -65,5 +77,64 @@ class VenueDetailsViewController: UIViewController {
     func setupRatingLabel() {
         self.ratingLabel.layer.borderColor = UIColor.bordeauxLight().cgColor
     }
+    
+    func resetUI() {
+        self.venueImageView.image = nil
+        self.titleLabel.text = nil
+        self.addressLabel.text = nil
+        self.categoryLabel.text = nil
+        self.ratingLabel.text = ""
+        self.venueActivityIndicator.startAnimating()
+        self.ratingActivityIndicator.startAnimating()
+    }
+    
+    func refreshUI() {
+        resetUI()
+        if (self.venue != nil) {
+            self.titleLabel.text = self.venue.name
+            self.addressLabel.text = self.venue.location.address
+            if (self.venue.categories.count > 0) {
+                self.categoryLabel.text = (self.venue.categories.first as! FSVenueCategoryDTO).name
+            }else {
+                self.categoryLabel.text = nil
+            }
+            NetworkManager.shared().fetchVenueDetails(self.venue.id, completion:
+                { (venueDetails, err) in
+                    if (err != nil) {
+                        self.venueActivityIndicator.stopAnimating()
+                        print("error getting venue details " + err!.localizedDescription)
+                        return
+                    }
+                    self.venueDetails = venueDetails!
+            })
+        }
+    }
 
+    func refreshDetails() {
+        if (self.venueDetails != nil) {
+            self.ratingActivityIndicator.stopAnimating()
+            if (self.venueDetails.rating != nil) {
+                self.ratingLabel.text = String(format: "%.1f", self.venueDetails.rating.doubleValue)
+            }else {
+                self.ratingLabel.text = "-"
+            }
+            if (self.venueDetails.photos.count.intValue > 0){
+                let group = self.venueDetails.photos.groups.first as! FSPhotosGroupDTO
+                let item = group.items.first as! FSPhotoItem
+                let url = item.prefix + "500x500" + item.suffix
+                print("getting image with url " + url)
+                self.venueImageView.sd_setImage(with: URL(string: url), completed: {
+                    (image, err, cacheType, url) in
+                    self.venueActivityIndicator.stopAnimating()
+                    if (err != nil) {
+                        print("error loading image " + err!.localizedDescription)
+                    }
+                })
+            }else {
+                self.venueActivityIndicator.stopAnimating()
+            }
+        }
+        
+    }
+    
 }

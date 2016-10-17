@@ -158,6 +158,7 @@
         NSLog(@"highlightMarker - 1");
         marker.icon = [MarkerHelper iconVenueSelected];
         self.selectedMarker = marker;
+        self.venueDetailsViewController.venue = marker.userData;
     }
 }
 
@@ -259,6 +260,7 @@
     NSLog(@"didTapAtCoordinate");
     if (self.selectedMarker) {
         [self hideVenueDetailsView];
+        [self.navigationItem setRightBarButtonItem:nil animated:YES];
     }
     [self unhighlightMarkerIfNeeded];
 }

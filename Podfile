@@ -3,23 +3,25 @@
 
 target 'Candystore' do
   # Uncomment this line if you're using Swift or would like to use dynamic frameworks
-#  use_frameworks!
+#    use_frameworks!
 
-  # Pods for Candystore
-  pod 'GoogleMaps'
-  pod 'GooglePlaces'
+    # Pods for Candystore
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
   
-  pod 'AFNetworking', '~> 3.0'
-  pod 'JSONModel'
+    pod 'AFNetworking', '~> 3.0'
+    pod 'JSONModel'
 
-  target 'CandystoreTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+    pod 'SDWebImage', '~>3.8'
 
-  target 'CandystoreUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+    target 'CandystoreTests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
+
+    target 'CandystoreUITests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
 
 end

@@ -20,6 +20,7 @@
 		13306E461DB2246D0042B5AA /* CandystoreUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13306E451DB2246D0042B5AA /* CandystoreUITests.m */; };
 		13306E561DB2287C0042B5AA /* UIColor+AppColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 13306E551DB2287C0042B5AA /* UIColor+AppColors.m */; };
 		13306E591DB22AE70042B5AA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13306E581DB22AE70042B5AA /* CoreLocation.framework */; };
+		134799E61DB4EB2200B48424 /* FSPhotosDataDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 134799E51DB4EB2200B48424 /* FSPhotosDataDTO.m */; };
 		1380F48C1DB3CC6600B86092 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1380F48B1DB3CC6600B86092 /* NetworkManager.m */; };
 		1380F48F1DB3D42B00B86092 /* FSVenueDetailsResponseDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1380F48E1DB3D42B00B86092 /* FSVenueDetailsResponseDTO.m */; };
 		1380F4951DB3D5B600B86092 /* FSVenueLocationDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1380F4941DB3D5B600B86092 /* FSVenueLocationDTO.m */; };
@@ -74,6 +75,8 @@
 		13306E551DB2287C0042B5AA /* UIColor+AppColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColors.m"; sourceTree = "<group>"; };
 		13306E581DB22AE70042B5AA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		13306E5A1DB2333F0042B5AA /* Definitions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
+		134799E41DB4EB2200B48424 /* FSPhotosDataDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPhotosDataDTO.h; sourceTree = "<group>"; };
+		134799E51DB4EB2200B48424 /* FSPhotosDataDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPhotosDataDTO.m; sourceTree = "<group>"; };
 		1380F48A1DB3CC6600B86092 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		1380F48B1DB3CC6600B86092 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		1380F48D1DB3D42B00B86092 /* FSVenueDetailsResponseDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenueDetailsResponseDTO.h; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 				1380F4941DB3D5B600B86092 /* FSVenueLocationDTO.m */,
 				1380F4961DB3D5D400B86092 /* FSVenueCategoryDTO.h */,
 				1380F4971DB3D5D400B86092 /* FSVenueCategoryDTO.m */,
+				134799E41DB4EB2200B48424 /* FSPhotosDataDTO.h */,
+				134799E51DB4EB2200B48424 /* FSPhotosDataDTO.m */,
 			);
 			name = DTO;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 				13306E251DB2246C0042B5AA /* AppDelegate.m in Sources */,
 				13E853631DB2A5400088863D /* Utils.m in Sources */,
 				131AD2C81DB433C500536068 /* VenueDetailsViewController.swift in Sources */,
+				134799E61DB4EB2200B48424 /* FSPhotosDataDTO.m in Sources */,
 				13DC81B61DB3BB5F003B6B3F /* FSVenuesResponseDTO.m in Sources */,
 				13306E221DB2246C0042B5AA /* main.m in Sources */,
 				131AD2CB1DB4375300536068 /* DeviceUtils.swift in Sources */,

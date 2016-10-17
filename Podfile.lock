@@ -22,19 +22,24 @@ PODS:
   - GooglePlaces (2.1.0):
     - GoogleMaps/Base (= 2.1.0)
   - JSONModel (1.7.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - GoogleMaps
   - GooglePlaces
   - JSONModel
+  - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
   GooglePlaces: 16e96266483b8010e9f275399403647978523c86
   JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: d863d6c8ac08b5186cf6f81ca3d28f8c9ecbdbb2
+PODFILE CHECKSUM: b3bea38b382582eb7d35d9bbf8f8de8ef0e6f2d8
 
 COCOAPODS: 1.0.1

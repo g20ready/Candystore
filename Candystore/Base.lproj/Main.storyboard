@@ -157,6 +157,10 @@
         <scene sceneID="CSa-HJ-7aa">
             <objects>
                 <viewController id="YlA-fp-EyG" customClass="VenueDetailsViewController" customModule="Candystore" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G9T-d9-srA"/>
+                        <viewControllerLayoutGuide type="bottom" id="re2-2x-BgQ"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Pvr-Bq-9t1">
                         <rect key="frame" x="0.0" y="0.0" width="343" height="120"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,19 +208,23 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ZKv-f0-dWk"/>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="8Wi-ES-aIO" firstAttribute="leading" secondItem="ozj-An-DbK" secondAttribute="trailing" constant="8" id="7EQ-Vm-HoA"/>
                                     <constraint firstItem="a2w-YL-dZP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Wi-ES-aIO" secondAttribute="trailing" constant="8" id="AeO-DW-lSf"/>
                                     <constraint firstItem="ozj-An-DbK" firstAttribute="top" secondItem="WGa-Pb-FRw" secondAttribute="top" id="AyU-kc-rbK"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="8Wi-ES-aIO" secondAttribute="bottom" id="BTA-Di-tR2"/>
                                     <constraint firstAttribute="bottom" secondItem="ozj-An-DbK" secondAttribute="bottom" id="Ddw-wV-UI1"/>
                                     <constraint firstItem="7ru-3G-LM4" firstAttribute="top" secondItem="nxD-e7-061" secondAttribute="bottom" constant="4" id="Msx-13-6Lc"/>
                                     <constraint firstItem="nxD-e7-061" firstAttribute="top" secondItem="WGa-Pb-FRw" secondAttribute="top" constant="8" id="Rte-Ew-iTm"/>
+                                    <constraint firstItem="ZKv-f0-dWk" firstAttribute="centerY" secondItem="a2w-YL-dZP" secondAttribute="centerY" id="TE2-of-rTv"/>
                                     <constraint firstItem="a2w-YL-dZP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7ru-3G-LM4" secondAttribute="trailing" constant="8" id="UUE-cv-8Pz"/>
                                     <constraint firstItem="nxD-e7-061" firstAttribute="leading" secondItem="ozj-An-DbK" secondAttribute="trailing" constant="8" id="VQK-c5-N3L"/>
                                     <constraint firstItem="8Ef-ja-33Y" firstAttribute="centerY" secondItem="ozj-An-DbK" secondAttribute="centerY" id="YNU-Lu-ZhM"/>
                                     <constraint firstItem="7ru-3G-LM4" firstAttribute="leading" secondItem="ozj-An-DbK" secondAttribute="trailing" constant="8" id="bg8-Ny-RKZ"/>
+                                    <constraint firstItem="ZKv-f0-dWk" firstAttribute="centerX" secondItem="a2w-YL-dZP" secondAttribute="centerX" id="cOM-YC-Abl"/>
                                     <constraint firstItem="ozj-An-DbK" firstAttribute="leading" secondItem="WGa-Pb-FRw" secondAttribute="leading" id="e4L-9a-vYj"/>
                                     <constraint firstItem="a2w-YL-dZP" firstAttribute="centerY" secondItem="WGa-Pb-FRw" secondAttribute="centerY" id="isi-xL-gWJ"/>
                                     <constraint firstItem="8Wi-ES-aIO" firstAttribute="top" secondItem="7ru-3G-LM4" secondAttribute="bottom" id="kxu-I7-PcH"/>
@@ -237,8 +245,10 @@
                     <connections>
                         <outlet property="addressLabel" destination="7ru-3G-LM4" id="mNb-Ja-8DS"/>
                         <outlet property="categoryLabel" destination="8Wi-ES-aIO" id="QzS-HM-USf"/>
+                        <outlet property="ratingActivityIndicator" destination="ZKv-f0-dWk" id="Scn-Wh-qEX"/>
                         <outlet property="ratingLabel" destination="a2w-YL-dZP" id="shD-8Q-Rg1"/>
                         <outlet property="titleLabel" destination="nxD-e7-061" id="2bI-1k-Uia"/>
+                        <outlet property="venueActivityIndicator" destination="8Ef-ja-33Y" id="Bg8-je-Ddz"/>
                         <outlet property="venueImageView" destination="ozj-An-DbK" id="oUp-02-dpp"/>
                     </connections>
                 </viewController>

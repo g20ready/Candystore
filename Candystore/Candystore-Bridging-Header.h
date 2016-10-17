@@ -3,5 +3,7 @@
 //
 
 #import <AFNetworking/AFNetworking.h>
-#import "FSVenuesResponseDTO.h"
+#import "FSVenueDetailsResponseDTO.h"
+#import "NetworkManager.h"
 #import "UIColor+AppColors.h"
+#import <SDWebImage/UIImageView+WebCache.h>

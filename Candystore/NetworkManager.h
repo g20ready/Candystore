@@ -24,14 +24,14 @@ static NSString * const VENUE_DETAILS_URL = @"https://api.foursquare.com/v2/venu
 
 typedef void (^fetchedVenues)(NSArray<FSVenueDTO *>* venues, NSError* error);
 
-- (void) fetchVenuesAtLat:(NSNumber*) lat
+- (NSURLSessionDataTask *) fetchVenuesAtLat:(NSNumber*) lat
                     atLng:(NSNumber*) lng
                     query:(NSString*) query
                completion:(fetchedVenues) completionHandler;
 
 typedef void (^fetchedVenueDetails)(FSVeuneDetailsDTO *venueDetails, NSError* error);
 
-- (void) fetchVenueDetails:(NSString*) venueId
+- (NSURLSessionDataTask *) fetchVenueDetails:(NSString*) venueId
              completion:(fetchedVenueDetails) completionHandler;
 
 

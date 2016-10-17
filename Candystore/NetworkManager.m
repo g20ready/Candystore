@@ -33,7 +33,7 @@
     return [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 
-- (void) fetchVenuesAtLat:(NSNumber*) lat
+- (NSURLSessionDataTask *) fetchVenuesAtLat:(NSNumber*) lat
                     atLng:(NSNumber*) lng
                     query:(NSString*) query
                completion:(fetchedVenues) completionHandler {
@@ -44,12 +44,12 @@
                                          withString:[lng stringValue]];
     url = [url stringByReplacingOccurrencesOfString:@"_QUERY" withString:query];
     url = [self encodeUrl:url];
-    NSLog(@"url = %@", url);
+    NSLog(@"GET: %@", url);
     
-    [self GET:url
-   parameters:nil
-     progress:nil
-      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+    return [self GET:url
+          parameters:nil
+            progress:nil
+             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
     {
         NSError *err = nil;
         FSVenuesResponseDTO *response = [[FSVenuesResponseDTO alloc] initWithDictionary:responseObject error:&err];
@@ -59,23 +59,25 @@
         }
         completionHandler(response.response.venues, nil);
     }
-      failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+             failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
     {
         completionHandler(nil, error);
     }];
 }
 
-- (void) fetchVenueDetails:(NSString *)venueId
+- (NSURLSessionDataTask *) fetchVenueDetails:(NSString *)venueId
                 completion:(fetchedVenueDetails)completionHandler {
     NSString *url = [self urlWithKeys:VENUE_DETAILS_URL];
     url = [url stringByReplacingOccurrencesOfString:@"_VENUE_ID"
                                          withString:venueId];
     url = [self encodeUrl:url];
     
-    [self GET:url
-   parameters:nil
-     progress:nil
-      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+    NSLog(@"GET: %@", url);
+    
+    return [self GET:url
+          parameters:nil
+            progress:nil
+             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
     {
         NSError *err = nil;
         FSVenueDetailsResponseDTO *response = [[FSVenueDetailsResponseDTO alloc] initWithDictionary:responseObject error:&err];
@@ -85,7 +87,7 @@
         }
         completionHandler(response.response.venue, nil);
     }
-      failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+             failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
     {
         completionHandler(nil, error);
     }];
