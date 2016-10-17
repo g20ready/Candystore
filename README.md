@@ -1,3 +1,3 @@
 # Candystore
 
-## Pods directory was removed cause dependency file size was too much. (>100mb)
+## Pods directory was removed cause dependencies require a lot of space (>100mb).
