@@ -9,11 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "JSONModel.h"
 
+@protocol FSVenueLocationDTO @end
+
 @interface FSVenueLocationDTO : JSONModel
 
-@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString<Optional> *address;
 @property (nonatomic, strong) NSArray<NSString *> *formattedAddress;
 @property (nonatomic, strong) NSNumber *lat;
 @property (nonatomic, strong) NSNumber *lng;
+@property (nonatomic, strong) NSNumber<Optional> *distance;
 
 @end

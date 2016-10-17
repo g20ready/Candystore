@@ -12,19 +12,20 @@
 #import "FSVenueCategoryDTO.h"
 #import "JSONModel.h"
 
+@protocol FSVenueDTO @end
+
 @interface FSVenueDTO : JSONModel
 
 @property (nonatomic, strong) NSString *id;
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSNumber *distance;
 @property (nonatomic, strong) FSVenueLocationDTO *location;
-@property (nonatomic, strong) NSArray<FSVenueCategoryDTO *> *categories;
+@property (nonatomic, strong) NSArray<FSVenueCategoryDTO> *categories;
 
 @end
 
 @interface FSVenuesDataDTO : JSONModel
 
-@property (nonatomic, strong) NSArray<FSVenueDTO *> *venues;
+@property (nonatomic, strong) NSArray<FSVenueDTO> *venues;
 
 @end
 

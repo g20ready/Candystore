@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "JSONModel.h"
 
+@protocol FSVenueCategoryDTO @end
+
 @interface FSVenueCategoryDTO : JSONModel
 
 @property (nonatomic, strong) NSString *id;

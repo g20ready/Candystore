@@ -22,7 +22,7 @@ static NSString * const VENUE_DETAILS_URL = @"https://api.foursquare.com/v2/venu
 
 #pragma mark GET
 
-typedef void (^fetchedVenues)(NSArray* venues, NSError* error);
+typedef void (^fetchedVenues)(NSArray<FSVenueDTO *>* venues, NSError* error);
 
 - (void) fetchVenuesAtLat:(NSNumber*) lat
                     atLng:(NSNumber*) lng

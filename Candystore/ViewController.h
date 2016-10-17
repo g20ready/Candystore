@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import "Candystore-Swift.h"
+
 #import "Utils.h"
 #import "UIColor+AppColors.h"
 #import "NetworkManager.h"
@@ -18,15 +20,25 @@
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate, GMSMapViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *latitudeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *longitudeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *currentLocationImageView;
 @property (weak, nonatomic) IBOutlet UILabel *currentLocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UIView *addressView;
 
-@property CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet UIView *mapContainerView;
 
+@property (weak, nonatomic) IBOutlet UIView *detailsContainerView;
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) GMSMapView *mapView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *venueDetailsContainerTopConstraint;
+
+@property (nonatomic, strong) VenueDetailsViewController *venueDetailsViewController;
+
+@property (nonatomic, strong) GMSMarker *selectedMarker;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *homeBarButtonItem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *closeBarButtonItem;
 @end
 
