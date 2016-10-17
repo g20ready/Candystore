@@ -8,6 +8,10 @@
 
 #import "FSVenueCategoryDTO.h"
 
+@implementation FSVenueCategoryIconDTO
+
+@end
+
 @implementation FSVenueCategoryDTO
 
 @end
