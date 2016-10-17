@@ -40,5 +40,8 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *homeBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *closeBarButtonItem;
+
+@property (nonatomic, strong) NSMutableArray<GMSMarker*> *markers;
+
 @end
 

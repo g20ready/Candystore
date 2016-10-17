@@ -15,6 +15,7 @@
 @implementation ViewController
 
 @synthesize mapView;
+@synthesize markers;
 
 - (void)viewDidLoad {self.mapView.selectedMarker = nil;
     [super viewDidLoad];
@@ -37,7 +38,7 @@
     return UIStatusBarStyleLightContent;
 }
 
-#pragma mark Functions
+#pragma mark Setup
 
 - (void)setup {
     [self setupStatusBar];
@@ -46,6 +47,7 @@
     [self setupAddressView];
     [self setupCurrentLocationView];
     [self setupLocationManager];
+    [self setupData];
 }
 
 - (void)setupStatusBar {
@@ -92,6 +94,12 @@
     }
 }
 
+- (void)setupData {
+    markers = [NSMutableArray array];
+}
+
+#pragma mark Functions
+
 - (void)addCurrentLocationMarker:(CLLocationCoordinate2D)coordinate {
     GMSMarker *marker = [MarkerHelper getCurrentLocationMarkerWithCoordinate:coordinate];
     marker.map = mapView;
@@ -121,6 +129,11 @@
     }];
 }
 
+- (void)refreshVenues {
+    CLLocationCoordinate2D coordinate = self.mapView.camera.target;
+    [self loadCandyStoresNearbyCoordinate:coordinate];
+}
+
 - (void)loadCandyStoresNearbyCoordinate:(CLLocationCoordinate2D)coordinate {
     NSNumber *lat = [NSNumber numberWithDouble:coordinate.latitude];
     NSNumber *lng = [NSNumber numberWithDouble:coordinate.longitude];
@@ -133,7 +146,11 @@
             NSLog(@"Error fetching candy stores : %@", error.localizedDescription);
             return;
         }
-        for (FSVenueDTO *venue in venues) {
+        
+        [self hideVenueDetailsView];
+        [self clearMarkersIfAny];
+        
+        [venues enumerateObjectsUsingBlock:^(FSVenueDTO * _Nonnull venue, NSUInteger idx, BOOL * _Nonnull stop) {
             CLLocationCoordinate2D coord =
             CLLocationCoordinate2DMake([venue.location.lat doubleValue],
                                        [venue.location.lng doubleValue]);
@@ -141,13 +158,19 @@
                                                       venue:venue
                                               onMarkerReady:^(GMSMarker * _Nonnull marker) {
                                                   marker.map = mapView;
-                                                  NSLog(@"userData 1 : %@", marker.userData);
+                                                  [markers addObject:marker];
                                               }];
-        }
-//        [venues enumerateObjectsUsingBlock:^(FSVenueDTO * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            
-//        }];
+        }];
     }];
+}
+
+- (void)clearMarkersIfAny {
+    if (self.markers) {
+        [self.markers enumerateObjectsUsingBlock:^(GMSMarker * _Nonnull marker, NSUInteger idx, BOOL * _Nonnull stop) {
+            marker.map = nil;
+        }];
+        [self.markers removeAllObjects];
+    }
 }
 
 - (void) unhighlightMarkerIfNeeded {
@@ -220,7 +243,6 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     if (locations && locations.lastObject) {
-        
         CLLocationCoordinate2D coordinate = locations.lastObject.coordinate;
         NSLog(@"didUpdateLocation [%f, %f]",
               coordinate.latitude, coordinate.longitude);
@@ -239,6 +261,7 @@
     if (status == kCLAuthorizationStatusDenied) {
         self.addressLabel.text = @"Enable location services!";
     }else if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        self.addressLabel.text = @"Locating you...";
         [self.locationManager requestLocation];
     }
 }
@@ -271,5 +294,15 @@
     [self unhighlightMarkerIfNeeded];
 }
 
+- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
+    if (self.locationManager.location) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                                 selector:@selector(refreshVenues)
+                                                   object:nil];
+        [self performSelector:@selector(refreshVenues)
+                   withObject:nil
+                   afterDelay:1.5f];
+    }
+}
 
 @end

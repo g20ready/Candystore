@@ -134,6 +134,7 @@
 		131AD2C61DB4338100536068 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				131AD2C41DB40BEC00536068 /* MarkerHelper.swift */,
 				13306E261DB2246C0042B5AA /* ViewController.h */,
 				13306E271DB2246C0042B5AA /* ViewController.m */,
 				131AD2C71DB433C500536068 /* VenueDetailsViewController.swift */,
@@ -148,7 +149,6 @@
 				13306E551DB2287C0042B5AA /* UIColor+AppColors.m */,
 				13E853611DB2A5400088863D /* Utils.h */,
 				13E853621DB2A5400088863D /* Utils.m */,
-				131AD2C41DB40BEC00536068 /* MarkerHelper.swift */,
 				131AD2CA1DB4375300536068 /* DeviceUtils.swift */,
 			);
 			name = Utils;
