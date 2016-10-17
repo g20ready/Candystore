@@ -11,12 +11,24 @@
 @implementation NetworkManager
 
 + (NetworkManager *)sharedManager {
-    static NetworkManager *sharedEngine = nil;
+    static NetworkManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedEngine = [[NetworkManager alloc] init];
+        manager = [[NetworkManager alloc] init];
     });
-    return sharedEngine;
+    return manager;
+}
+
+- (instancetype) init {
+    return [super init];
+}
+
+
+- (AFHTTPSessionManager *) sessionManager {
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] init];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setTimeoutInterval:10.0];
+    return manager;
 }
 
 - (NSString*) urlWithKeys:(NSString *) url {
@@ -46,10 +58,12 @@
     url = [self encodeUrl:url];
     NSLog(@"GET: %@", url);
     
-    return [self GET:url
-          parameters:nil
-            progress:nil
-             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+    AFHTTPSessionManager *manager = [self sessionManager];
+    
+    return [manager GET:url
+             parameters:nil
+               progress:nil
+                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
     {
         NSError *err = nil;
         FSVenuesResponseDTO *response = [[FSVenuesResponseDTO alloc] initWithDictionary:responseObject error:&err];
@@ -61,6 +75,7 @@
     }
              failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
     {
+        NSLog(@"Error fetchVenuesAtLat :%@", error);
         completionHandler(nil, error);
     }];
 }
@@ -74,10 +89,12 @@
     
     NSLog(@"GET: %@", url);
     
-    return [self GET:url
-          parameters:nil
-            progress:nil
-             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+    AFHTTPSessionManager *manager = [self sessionManager];
+    
+    return [manager GET:url
+             parameters:nil
+               progress:nil
+                success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
     {
         NSError *err = nil;
         FSVenueDetailsResponseDTO *response = [[FSVenueDetailsResponseDTO alloc] initWithDictionary:responseObject error:&err];
@@ -89,6 +106,7 @@
     }
              failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
     {
+        NSLog(@"Error fetchVenueDetails :%@", error);
         completionHandler(nil, error);
     }];
 }

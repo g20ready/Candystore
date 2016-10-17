@@ -17,7 +17,7 @@ static NSString * const VENUES_URL = @"https://api.foursquare.com/v2/venues/sear
 
 static NSString * const VENUE_DETAILS_URL = @"https://api.foursquare.com/v2/venues/_VENUE_ID?client_id= _CLIENT_ID&client_secret=_CLIENT_SECRET&v=_VERSION";
 
-@interface NetworkManager : AFHTTPSessionManager
+@interface NetworkManager : NSObject
 
 + (NetworkManager *)sharedManager;
 
