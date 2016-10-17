@@ -82,16 +82,11 @@
     self.locationManager.delegate = self;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     
-    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    if (status == kCLAuthorizationStatusNotDetermined) {
-        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [self.locationManager requestWhenInUseAuthorization];
-        }
-    }else if (status == kCLAuthorizationStatusDenied) {
-        self.addressLabel.text = @"Enable location services!";
-    }else {
-        [self.locationManager requestLocation];
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [self.locationManager requestWhenInUseAuthorization];
     }
+    
+    [self.locationManager requestLocation];
 }
 
 - (void)setupData {
@@ -99,6 +94,16 @@
 }
 
 #pragma mark Functions
+
+- (void)updateAddressLabel {
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        self.addressLabel.text = @"Locating you...";
+    }else {
+        self.addressLabel.text = @"Enable location services...";
+    }
+}
+
 
 - (void)addCurrentLocationMarker:(CLLocationCoordinate2D)coordinate {
     GMSMarker *marker = [MarkerHelper getCurrentLocationMarkerWithCoordinate:coordinate];
@@ -109,6 +114,8 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude
                                                             longitude:coordinate.longitude
                                                                  zoom:15];
+    //Forcing refresh when we zoom at current location
+    self.shouldRefresh = YES;
     [self.mapView animateToCameraPosition:camera];
 }
 
@@ -129,48 +136,79 @@
     }];
 }
 
-- (void)refreshVenues {
-    CLLocationCoordinate2D coordinate = self.mapView.camera.target;
-    [self loadCandyStoresNearbyCoordinate:coordinate];
+- (void)cancelRequest {
+    if (self.fetchVenuesRequest &&
+        self.fetchVenuesRequest.state == NSURLSessionTaskStateRunning) {
+        [self.fetchVenuesRequest cancel];
+    }
 }
 
-- (void)loadCandyStoresNearbyCoordinate:(CLLocationCoordinate2D)coordinate {
+- (void)loadVenuesNearCoordinate:(CLLocationCoordinate2D)coordinate {
     NSNumber *lat = [NSNumber numberWithDouble:coordinate.latitude];
     NSNumber *lng = [NSNumber numberWithDouble:coordinate.longitude];
+    
+//    [self cancelRequest];
+    
+    self.fetchVenuesRequest =
     [[NetworkManager sharedManager] fetchVenuesAtLat:lat
                                                atLng:lng
                                                query:@"candy store"
-                                          completion:^(NSArray<FSVenueDTO *> *venues, NSError *error)
+                                          completion:
+     ^(NSArray<FSVenueDTO *> *venues, NSError *error)
     {
         if (error) {
             NSLog(@"Error fetching candy stores : %@", error.localizedDescription);
             return;
         }
-        
-        [self hideVenueDetailsView];
-        [self clearMarkersIfAny];
-        
-        [venues enumerateObjectsUsingBlock:^(FSVenueDTO * _Nonnull venue, NSUInteger idx, BOOL * _Nonnull stop) {
-            CLLocationCoordinate2D coord =
-            CLLocationCoordinate2DMake([venue.location.lat doubleValue],
-                                       [venue.location.lng doubleValue]);
-            [MarkerHelper getCandyStoreMarkerWithCoordinate:coord
-                                                      venue:venue
-                                              onMarkerReady:^(GMSMarker * _Nonnull marker) {
-                                                  marker.map = mapView;
-                                                  [markers addObject:marker];
-                                              }];
+        [[MarkerManager shared] downloadCategoryImagesWithVenues:venues onFinishedDownloading:^{
+            [self clearMarkers];
+            [self addMarkersFromVenues:venues];
         }];
+        
     }];
 }
 
-- (void)clearMarkersIfAny {
-    if (self.markers) {
-        [self.markers enumerateObjectsUsingBlock:^(GMSMarker * _Nonnull marker, NSUInteger idx, BOOL * _Nonnull stop) {
-            marker.map = nil;
-        }];
-        [self.markers removeAllObjects];
-    }
+- (void)refreshVenues {
+    CLLocationCoordinate2D coordinate = self.mapView.camera.target;
+    [self loadVenuesNearCoordinate:coordinate];
+    
+}
+
+- (void)cancelRefreshVenues {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self
+                                             selector:@selector(refreshVenues)
+                                               object:nil];
+}
+
+- (void)addMarkersFromVenues:(NSArray<FSVenueDTO*> *) venues {
+    NSLog(@"addMarkersFromVenues");
+    [venues enumerateObjectsUsingBlock:^(FSVenueDTO * _Nonnull venue, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (self.selectedMarker) {
+            NSDictionary *userDate = self.selectedMarker.userData;
+            FSVenueDTO *selectedMarkerVenue = [userDate objectForKey:@"venue"];
+            if ([selectedMarkerVenue.id isEqualToString:venue.id]) {
+                return;
+            }
+        }
+        GMSMarker *marker = [[MarkerManager shared] getMarkerWithVenue:venue];
+        marker.map = mapView;
+        [markers addObject:marker];
+    }];
+}
+
+- (void)clearMarkers {
+    NSLog(@"Clearing Markers");
+    [self.mapView clear];
+//    if (self.markers) {
+//        [self.markers enumerateObjectsUsingBlock:^(GMSMarker * _Nonnull marker, NSUInteger idx, BOOL * _Nonnull stop) {
+//            if (![marker isEqual:self.selectedMarker]) {
+//                marker.map = nil;
+//                [self.markers removeObject:marker];
+//            }else {
+//                NSLog(@"marker %ld is selected Marker", idx);
+//            }
+//        }];
+//    }
 }
 
 - (void) unhighlightMarkerIfNeeded {
@@ -183,7 +221,6 @@
 
 - (void) highlightMarker:(GMSMarker *)marker {
     if (marker) {
-        NSLog(@"userData : %@", marker.userData);
         NSMutableDictionary *userData = marker.userData;
         marker.icon = [userData objectForKey:@"iconSelected"];
         self.selectedMarker = marker;
@@ -247,9 +284,8 @@
         NSLog(@"didUpdateLocation [%f, %f]",
               coordinate.latitude, coordinate.longitude);
         [self addCurrentLocationMarker:coordinate];
-        [self zoomAtCurrentLocation:coordinate];
         [self loadAddressAtCoordinate:coordinate];
-        [self loadCandyStoresNearbyCoordinate:coordinate];
+        [self zoomAtCurrentLocation:coordinate];
     }
 }
 
@@ -258,19 +294,15 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-    if (status == kCLAuthorizationStatusDenied) {
-        self.addressLabel.text = @"Enable location services!";
-    }else if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        self.addressLabel.text = @"Locating you...";
-        [self.locationManager requestLocation];
-    }
+    [self updateAddressLabel];
+    [self.locationManager requestLocation];
 }
 
 #pragma mark GMSMapVieeDelegate
 
 - (BOOL) mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
-    NSLog(@"didTapMarker");
-    NSLog(@"MapViewSelectedMarker %@", self.mapView.selectedMarker);
+    [self cancelRefreshVenues];
+    
     if (![marker userData]) {
         return YES;
     }
@@ -294,11 +326,15 @@
     [self unhighlightMarkerIfNeeded];
 }
 
+- (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture {
+    NSLog(@"moved");
+    self.shouldRefresh = gesture;
+}
+
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
-    if (self.locationManager.location) {
-        [NSObject cancelPreviousPerformRequestsWithTarget:self
-                                                 selector:@selector(refreshVenues)
-                                                   object:nil];
+    if (self.shouldRefresh) {
+        NSLog(@"Refreshing");
+        self.shouldRefresh = false;
         [self performSelector:@selector(refreshVenues)
                    withObject:nil
                    afterDelay:1.5f];

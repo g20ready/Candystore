@@ -67,6 +67,7 @@ import GoogleMaps
                 }
                 onImageDownloaded(image!)
         })
+        
     }
     
     

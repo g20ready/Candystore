@@ -6,6 +6,7 @@
 //
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 #import "Definitions.h"
@@ -34,5 +35,5 @@ typedef void (^fetchedVenueDetails)(FSVeuneDetailsDTO *venueDetails, NSError* er
 - (NSURLSessionDataTask *) fetchVenueDetails:(NSString*) venueId
              completion:(fetchedVenueDetails) completionHandler;
 
-
 @end
+

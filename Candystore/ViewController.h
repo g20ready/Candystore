@@ -43,5 +43,9 @@
 
 @property (nonatomic, strong) NSMutableArray<GMSMarker*> *markers;
 
+@property (nonatomic, assign) BOOL shouldRefresh;
+
+@property (nonatomic, strong) NSURLSessionDataTask *fetchVenuesRequest;
+
 @end
 
