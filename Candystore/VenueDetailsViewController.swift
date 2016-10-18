@@ -138,7 +138,6 @@ class VenueDetailsViewController: UIViewController {
                 let group = self.venueDetails.photos.groups.first as! FSPhotosGroupDTO
                 let item = group.items.first as! FSPhotoItem
                 let url = item.prefix + "500x500" + item.suffix
-                print("getting image with url " + url)
                 self.venueImageView.sd_setImage(with: URL(string: url), completed: {
                     (image, err, cacheType, url) in
                     self.venueActivityIndicator.stopAnimating()
@@ -150,7 +149,5 @@ class VenueDetailsViewController: UIViewController {
                 self.venueActivityIndicator.stopAnimating()
             }
         }
-        
     }
-    
 }

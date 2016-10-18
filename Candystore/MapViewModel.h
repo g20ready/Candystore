@@ -10,6 +10,8 @@
 #import <NSArray+BlocksKit.h>
 #import "FSVenuesResponseDTO.h"
 
+#import "UIAlertManager.h"
+
 #import "Candystore-Swift.h"
 
 @import GoogleMaps;
@@ -20,6 +22,8 @@
 
 #pragma mark Properties
 
+@property (nonatomic, assign) CLLocationCoordinate2D currentLocationCoordinate;
+
 @property (nonatomic, assign) BOOL shouldRefresh;
 
 @property (nonatomic, strong) NSMutableDictionary *markers;
@@ -29,6 +33,8 @@
 typedef void (^markerUpdateFinished)(NSArray<GMSMarker*> *markersAdded, NSArray<GMSMarker*> *markersRemoved);
 
 #pragma mark Interface
+
+- (BOOL)isCurrentLocationValid;
 
 - (GMSMarker *)selectedMarker;
 - (void) setSelectedMarker:(GMSMarker *)marker;

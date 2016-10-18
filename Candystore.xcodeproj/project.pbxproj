@@ -22,6 +22,7 @@
 		13306E591DB22AE70042B5AA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13306E581DB22AE70042B5AA /* CoreLocation.framework */; };
 		134799E61DB4EB2200B48424 /* FSPhotosDataDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 134799E51DB4EB2200B48424 /* FSPhotosDataDTO.m */; };
 		134A89CC1DB633420046CC37 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 134A89CB1DB633420046CC37 /* BaseNavigationController.m */; };
+		134A89CF1DB635C00046CC37 /* UIAlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 134A89CE1DB635C00046CC37 /* UIAlertManager.m */; };
 		1380F48C1DB3CC6600B86092 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1380F48B1DB3CC6600B86092 /* NetworkManager.m */; };
 		1380F48F1DB3D42B00B86092 /* FSVenueDetailsResponseDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1380F48E1DB3D42B00B86092 /* FSVenueDetailsResponseDTO.m */; };
 		1380F4951DB3D5B600B86092 /* FSVenueLocationDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1380F4941DB3D5B600B86092 /* FSVenueLocationDTO.m */; };
@@ -82,6 +83,8 @@
 		134799E51DB4EB2200B48424 /* FSPhotosDataDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPhotosDataDTO.m; sourceTree = "<group>"; };
 		134A89CA1DB633420046CC37 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		134A89CB1DB633420046CC37 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		134A89CD1DB635C00046CC37 /* UIAlertManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIAlertManager.h; sourceTree = "<group>"; };
+		134A89CE1DB635C00046CC37 /* UIAlertManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIAlertManager.m; sourceTree = "<group>"; };
 		1380F48A1DB3CC6600B86092 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		1380F48B1DB3CC6600B86092 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		1380F48D1DB3D42B00B86092 /* FSVenueDetailsResponseDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenueDetailsResponseDTO.h; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 		131AD2C91DB4371600536068 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				134A89CD1DB635C00046CC37 /* UIAlertManager.h */,
+				134A89CE1DB635C00046CC37 /* UIAlertManager.m */,
 				13306E541DB2287C0042B5AA /* UIColor+AppColors.h */,
 				13306E551DB2287C0042B5AA /* UIColor+AppColors.m */,
 				13E853611DB2A5400088863D /* Utils.h */,
@@ -569,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				134A89CF1DB635C00046CC37 /* UIAlertManager.m in Sources */,
 				1380F4981DB3D5D400B86092 /* FSVenueCategoryDTO.m in Sources */,
 				1380F48F1DB3D42B00B86092 /* FSVenueDetailsResponseDTO.m in Sources */,
 				13DC81B31DB3BA90003B6B3F /* FSBaseResponseDTO.m in Sources */,

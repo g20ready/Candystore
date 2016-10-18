@@ -63,7 +63,6 @@ class MarkerManager : NSObject {
                     return
                 }
                 if self.downloadedImages[id] == nil {
-                    print("adding image to downloaded image with id " + id)
                     self.downloadedImages[id] = image
                 }
                 if downloadedCount == toDownloadCount {

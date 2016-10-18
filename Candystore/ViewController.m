@@ -41,6 +41,7 @@
     [self setupGoogleMap];
     [self setupAddressView];
     [self setupCurrentLocationView];
+    [self setupReachability];
     [self setupLocationManager];
     [self setupData];
 }
@@ -84,6 +85,32 @@
     [self.locationManager requestLocation];
 }
 
+- (void)setupReachability {
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"Reachability: %@", AFStringFromNetworkReachabilityStatus(status));
+        switch (status) {
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+            case AFNetworkReachabilityStatusReachableViaWWAN: {
+                if ([self.mapViewModel isCurrentLocationValid]) {
+                    CLLocationCoordinate2D coordinate = self.locationManager.location.coordinate;
+                    [self loadAddressAtCoordinate:coordinate];
+                    self.mapViewModel.shouldRefresh = YES;
+                    [self zoomAtCurrentLocation:coordinate];
+                    
+                    //We force refresh in case the mapview didnt
+                    //move because is was already there.
+                    [self cancelRefreshVenues];
+                    [self refreshVenues];
+                }
+                break;
+            }
+            default:
+                break;
+            }
+        }];
+}
+
 - (void)setupData {
     self.mapViewModel = [[MapViewModel alloc] init];
 }
@@ -113,6 +140,7 @@
 }
 
 - (void)loadAddressAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    self.addressLabel.text = @"Waiting for address...";
     [[GMSGeocoder geocoder] reverseGeocodeCoordinate:coordinate completionHandler:^(GMSReverseGeocodeResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error while reverse geocoding address");
@@ -145,7 +173,10 @@
      ^(NSArray<FSVenueDTO *> *venues, NSError *error)
     {
         if (error) {
-            NSLog(@"Error fetching candy stores : %@", error.localizedDescription);
+            [UIAlertManager presentAlert:self
+                               withTitle:@"An unexpected error occurred"
+                                 message:[error localizedDescription]
+                             actionTitle:@"OK"];
             return;
         }
         
@@ -231,17 +262,11 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     if (locations && locations.lastObject) {
-        CLLocationCoordinate2D coordinate = locations.lastObject.coordinate;
-        
-        
-        [self addCurrentLocationMarker:coordinate];
-        [self loadAddressAtCoordinate:coordinate];
-        
-        //We explicitly refresh when receiving location
-        //and moving camera to it
-        NSLog(@"Received Location");
+        self.mapViewModel.currentLocationCoordinate = locations.lastObject.coordinate;
+        [self addCurrentLocationMarker:self.mapViewModel.currentLocationCoordinate];
+        [self loadAddressAtCoordinate:self.mapViewModel.currentLocationCoordinate];
         self.mapViewModel.shouldRefresh = YES;
-        [self zoomAtCurrentLocation:coordinate];
+        [self zoomAtCurrentLocation:self.mapViewModel.currentLocationCoordinate];
     }
 }
 
@@ -257,8 +282,6 @@
 #pragma mark GMSMapVieeDelegate
 
 - (BOOL) mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
-    [self cancelRefreshVenues];
-    
     if (![marker userData]) {
         return YES;
     }

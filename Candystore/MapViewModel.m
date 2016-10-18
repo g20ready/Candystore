@@ -10,6 +10,8 @@
 
 @implementation MapViewModel
 
+@synthesize currentLocationCoordinate;
+
 @synthesize shouldRefresh;
 
 #pragma mark Init
@@ -18,6 +20,7 @@
     self = [super init];
     if (self) {
         self.markers = [NSMutableDictionary dictionary];
+        self.currentLocationCoordinate = kCLLocationCoordinate2DInvalid;
     }
     return self;
 }
@@ -60,6 +63,11 @@
     }
     return nil;
 }
+
+- (BOOL)isCurrentLocationValid {
+    return CLLocationCoordinate2DIsValid(self.currentLocationCoordinate);
+}
+
 
 #pragma mark Getters & Setters
 
