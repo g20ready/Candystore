@@ -152,14 +152,20 @@
             NSLog(@"Error fetching candy stores : %@", error.localizedDescription);
             return;
         }
+        NSLog(@"fetched venues");
         [[MarkerManager shared] downloadCategoryImagesWithVenues:venues onFinishedDownloading:^{
             [self.mapViewModel updateMarkersFromVenues:venues withFinishedBlock:^(NSArray<GMSMarker *> *markersAdded, NSArray<GMSMarker *> *markersRemoved) {
+                
+                NSLog(@"downloaded category icons");
+                
                 [markersAdded enumerateObjectsUsingBlock:^(GMSMarker * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     obj.map = self.mapView;
                 }];
+                NSLog(@"added markers");
                 [markersRemoved enumerateObjectsUsingBlock:^(GMSMarker * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     obj.map = nil;
                 }];
+                NSLog(@"removed markers");
             }];
         }];
         

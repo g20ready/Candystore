@@ -48,6 +48,11 @@ class MarkerManager : NSObject {
         let iconsToDownload = categoryIconsToDownload(venues: venues)
         var downloadedCount = 0
         let toDownloadCount = iconsToDownload.keys.count
+        if (toDownloadCount == 0) {
+            DispatchQueue.main.async {
+                onFinishedDownloading()
+            }
+        }
         for (id, url) in iconsToDownload {
             SDWebImageManager.shared().downloadImage(with: URL(string: url), options: SDWebImageOptions(rawValue: UInt(0x0)), progress: nil, completed: { (image, err, cache, finished, url) in
                 

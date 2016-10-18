@@ -26,7 +26,9 @@
     
     NSArray<GMSMarker*> *removed = [[self.markers.allKeys bk_select:^BOOL(NSString* venueId) {
         return ![venues bk_any:^BOOL(FSVenueDTO *venue) {
-            return [venueId isEqualToString:venue.id];
+            FSVenueDTO *selectedVenue = [self selectedVenue];
+            BOOL isSelectedVenue = selectedVenue != nil && [venueId isEqualToString:selectedVenue.id];
+            return [venueId isEqualToString:venue.id] || isSelectedVenue;
         }];
     }] bk_map:^id(NSString *venueId) {
         GMSMarker *marker = [self.markers objectForKey:venueId];
