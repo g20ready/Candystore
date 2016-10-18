@@ -246,6 +246,7 @@
 - (IBAction)homeBarButtonItemClick:(id)sender {
     if (self.locationManager.location) {
         CLLocationCoordinate2D coordinate = self.locationManager.location.coordinate;
+        self.mapViewModel.shouldRefresh = YES;
         [self zoomAtCurrentLocation:coordinate];
     }
 }
@@ -256,7 +257,6 @@
     [self.navigationItem setRightBarButtonItem:nil
                                       animated:true];
 }
-
 
 #pragma mark CLLocationManagerDelegate
 
@@ -300,7 +300,10 @@
 }
 
 - (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture {
-    self.mapViewModel.shouldRefresh = gesture;
+    //Fixes Case:
+    //location received & shouldRefresh set to YES & zoomAtCurrentLocation is called
+    //willMove will be called with gesture = NO, and will cancel our refresh
+    self.mapViewModel.shouldRefresh = gesture || self.mapViewModel.shouldRefresh;
 }
 
 - (void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position {

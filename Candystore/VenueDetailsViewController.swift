@@ -137,7 +137,7 @@ class VenueDetailsViewController: UIViewController {
             if (self.venueDetails.photos.count.intValue > 0){
                 let group = self.venueDetails.photos.groups.first as! FSPhotosGroupDTO
                 let item = group.items.first as! FSPhotoItem
-                let url = item.prefix + "500x500" + item.suffix
+                let url = self.urlForVenuePhoto(prefix: item.prefix, suffix: item.suffix)
                 self.venueImageView.sd_setImage(with: URL(string: url), completed: {
                     (image, err, cacheType, url) in
                     self.venueActivityIndicator.stopAnimating()
@@ -150,4 +150,14 @@ class VenueDetailsViewController: UIViewController {
             }
         }
     }
+    
+    func urlForVenuePhoto(prefix: String, suffix: String) -> String {
+        let screenSize = UIScreen.main.calculateScreenSize();
+        var resolution = "300x300"
+        if screenSize == .screen_5_5 {
+            resolution = "500x500"
+        }
+        return prefix + resolution + suffix;
+    }
+    
 }
