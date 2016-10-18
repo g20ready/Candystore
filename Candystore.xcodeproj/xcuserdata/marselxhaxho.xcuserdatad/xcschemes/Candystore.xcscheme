@@ -20,6 +20,20 @@
                ReferencedContainer = "container:Candystore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "13306E351DB2246D0042B5AA"
+               BuildableName = "CandystoreTests.xctest"
+               BlueprintName = "CandystoreTests"
+               ReferencedContainer = "container:Candystore.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

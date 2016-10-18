@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "CandystoreTests.m"
 
 @interface CandystoreTests : XCTestCase
 

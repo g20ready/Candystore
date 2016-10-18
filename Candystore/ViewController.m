@@ -128,7 +128,7 @@
 
 
 - (void)addCurrentLocationMarker:(CLLocationCoordinate2D)coordinate {
-    GMSMarker *marker = [MarkerHelper getCurrentLocationMarkerWithCoordinate:coordinate];
+    GMSMarker *marker = [[MarkerManager shared] getCurrentLocationMarkerWithCoordinate:coordinate];
     marker.map = mapView;
 }
 

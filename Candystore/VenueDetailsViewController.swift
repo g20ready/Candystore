@@ -153,11 +153,10 @@ class VenueDetailsViewController: UIViewController {
     
     func urlForVenuePhoto(prefix: String, suffix: String) -> String {
         let screenSize = UIScreen.main.calculateScreenSize();
-        var resolution = "300x300"
         if screenSize == .screen_5_5 {
-            resolution = "500x500"
+            return FSUtils.urlForPhoto(prefix: prefix, resolution: 500, suffix: suffix)
         }
-        return prefix + resolution + suffix;
+        return FSUtils.urlForPhoto(prefix: prefix, resolution: 300, suffix: suffix)
     }
     
 }

@@ -82,7 +82,9 @@ class MarkerManager : NSObject {
             if (venue.categories != nil && venue.categories.count > 0) {
                 let category = venue.categories.first! as! FSVenueCategoryDTO
                 if self.downloadedImages[category.id] == nil && iconsToDownload[category.id] == nil{
-                    iconsToDownload[category.id] = getCategoryIconUrl(category: category)
+                    let icon = category.icon!
+                    iconsToDownload[category.id] =
+                        FSUtils.urlForCategoryIcon(prefix: icon.prefix, resolution: 88, suffix: icon.suffix)
                 }
             }
         }
