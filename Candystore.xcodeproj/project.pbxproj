@@ -26,6 +26,7 @@
 		1380F4951DB3D5B600B86092 /* FSVenueLocationDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1380F4941DB3D5B600B86092 /* FSVenueLocationDTO.m */; };
 		1380F4981DB3D5D400B86092 /* FSVenueCategoryDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1380F4971DB3D5D400B86092 /* FSVenueCategoryDTO.m */; };
 		13DA40C71DB54EBA0047B4E6 /* MarkerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DA40C61DB54EBA0047B4E6 /* MarkerManager.swift */; };
+		13DA40CB1DB572FA0047B4E6 /* MapViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DA40CA1DB572FA0047B4E6 /* MapViewModel.m */; };
 		13DC81B31DB3BA90003B6B3F /* FSBaseResponseDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DC81B21DB3BA90003B6B3F /* FSBaseResponseDTO.m */; };
 		13DC81B61DB3BB5F003B6B3F /* FSVenuesResponseDTO.m in Sources */ = {isa = PBXBuildFile; fileRef = 13DC81B51DB3BB5F003B6B3F /* FSVenuesResponseDTO.m */; };
 		13E853631DB2A5400088863D /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E853621DB2A5400088863D /* Utils.m */; };
@@ -87,6 +88,8 @@
 		1380F4961DB3D5D400B86092 /* FSVenueCategoryDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSVenueCategoryDTO.h; sourceTree = "<group>"; };
 		1380F4971DB3D5D400B86092 /* FSVenueCategoryDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSVenueCategoryDTO.m; sourceTree = "<group>"; };
 		13DA40C61DB54EBA0047B4E6 /* MarkerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerManager.swift; sourceTree = "<group>"; };
+		13DA40C91DB572FA0047B4E6 /* MapViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewModel.h; sourceTree = "<group>"; };
+		13DA40CA1DB572FA0047B4E6 /* MapViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewModel.m; sourceTree = "<group>"; };
 		13DC81AC1DB3B6AA003B6B3F /* Candystore-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Candystore-Bridging-Header.h"; sourceTree = "<group>"; };
 		13DC81B11DB3BA90003B6B3F /* FSBaseResponseDTO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSBaseResponseDTO.h; sourceTree = "<group>"; };
 		13DC81B21DB3BA90003B6B3F /* FSBaseResponseDTO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSBaseResponseDTO.m; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 		13DA40C81DB5728D0047B4E6 /* VM */ = {
 			isa = PBXGroup;
 			children = (
+				13DA40C91DB572FA0047B4E6 /* MapViewModel.h */,
+				13DA40CA1DB572FA0047B4E6 /* MapViewModel.m */,
 			);
 			name = VM;
 			sourceTree = "<group>";
@@ -572,6 +577,7 @@
 				13DC81B61DB3BB5F003B6B3F /* FSVenuesResponseDTO.m in Sources */,
 				13DA40C71DB54EBA0047B4E6 /* MarkerManager.swift in Sources */,
 				13306E221DB2246C0042B5AA /* main.m in Sources */,
+				13DA40CB1DB572FA0047B4E6 /* MapViewModel.m in Sources */,
 				131AD2CB1DB4375300536068 /* DeviceUtils.swift in Sources */,
 				1380F4951DB3D5B600B86092 /* FSVenueLocationDTO.m in Sources */,
 				1380F48C1DB3CC6600B86092 /* NetworkManager.m in Sources */,

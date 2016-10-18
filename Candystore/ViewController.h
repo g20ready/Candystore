@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <NSArray+BlocksKit.h>
+
+#import "MapViewModel.h"
 
 #import "Candystore-Swift.h"
 
@@ -36,12 +39,10 @@
 
 @property (nonatomic, strong) VenueDetailsViewController *venueDetailsViewController;
 
-@property (nonatomic, strong) GMSMarker *selectedMarker;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *homeBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *closeBarButtonItem;
 
-@property (nonatomic, strong) NSMutableArray<GMSMarker*> *markers;
+@property (nonatomic, strong) MapViewModel *mapViewModel;
 
 @property (nonatomic, assign) BOOL shouldRefresh;
 

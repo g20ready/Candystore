@@ -15,7 +15,6 @@
 @implementation ViewController
 
 @synthesize mapView;
-@synthesize markers;
 
 - (void)viewDidLoad {self.mapView.selectedMarker = nil;
     [super viewDidLoad];
@@ -90,7 +89,7 @@
 }
 
 - (void)setupData {
-    markers = [NSMutableArray array];
+    self.mapViewModel = [[MapViewModel alloc] init];
 }
 
 #pragma mark Functions
@@ -114,8 +113,6 @@
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:coordinate.latitude
                                                             longitude:coordinate.longitude
                                                                  zoom:15];
-    //Forcing refresh when we zoom at current location
-    self.shouldRefresh = YES;
     [self.mapView animateToCameraPosition:camera];
 }
 
@@ -128,10 +125,8 @@
         if (response.firstResult) {
             GMSAddress *address = response.firstResult;
             NSString *firstLine = [address.lines firstObject];
-            [UIView animateWithDuration:0.4 animations:^{
-                self.addressLabel.text = [NSString stringWithFormat:@"%@", firstLine];
-                [self.view layoutIfNeeded];
-            }];
+            self.addressLabel.text = [NSString stringWithFormat:@"%@", firstLine];
+            [self.view layoutIfNeeded];
         }
     }];
 }
@@ -147,9 +142,6 @@
     NSNumber *lat = [NSNumber numberWithDouble:coordinate.latitude];
     NSNumber *lng = [NSNumber numberWithDouble:coordinate.longitude];
     
-//    [self cancelRequest];
-    
-    self.fetchVenuesRequest =
     [[NetworkManager sharedManager] fetchVenuesAtLat:lat
                                                atLng:lng
                                                query:@"candy store"
@@ -161,8 +153,14 @@
             return;
         }
         [[MarkerManager shared] downloadCategoryImagesWithVenues:venues onFinishedDownloading:^{
-            [self clearMarkers];
-            [self addMarkersFromVenues:venues];
+            [self.mapViewModel updateMarkersFromVenues:venues withFinishedBlock:^(NSArray<GMSMarker *> *markersAdded, NSArray<GMSMarker *> *markersRemoved) {
+                [markersAdded enumerateObjectsUsingBlock:^(GMSMarker * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    obj.map = self.mapView;
+                }];
+                [markersRemoved enumerateObjectsUsingBlock:^(GMSMarker * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    obj.map = nil;
+                }];
+            }];
         }];
         
     }];
@@ -182,50 +180,22 @@
 
 - (void)addMarkersFromVenues:(NSArray<FSVenueDTO*> *) venues {
     NSLog(@"addMarkersFromVenues");
-    [venues enumerateObjectsUsingBlock:^(FSVenueDTO * _Nonnull venue, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (self.selectedMarker) {
-            NSDictionary *userDate = self.selectedMarker.userData;
-            FSVenueDTO *selectedMarkerVenue = [userDate objectForKey:@"venue"];
-            if ([selectedMarkerVenue.id isEqualToString:venue.id]) {
-                return;
-            }
-        }
-        GMSMarker *marker = [[MarkerManager shared] getMarkerWithVenue:venue];
-        marker.map = mapView;
-        [markers addObject:marker];
-    }];
+//    [venues enumerateObjectsUsingBlock:^(FSVenueDTO * _Nonnull venue, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if (self.selectedMarker) {
+//            NSDictionary *userDate = self.selectedMarker.userData;
+//            FSVenueDTO *selectedMarkerVenue = [userDate objectForKey:@"venue"];
+//            if ([selectedMarkerVenue.id isEqualToString:venue.id]) {
+//                return;
+//            }
+//        }
+//        GMSMarker *marker = [[MarkerManager shared] getMarkerWithVenue:venue];
+//        marker.map = mapView;
+//    }];
 }
 
 - (void)clearMarkers {
     NSLog(@"Clearing Markers");
     [self.mapView clear];
-//    if (self.markers) {
-//        [self.markers enumerateObjectsUsingBlock:^(GMSMarker * _Nonnull marker, NSUInteger idx, BOOL * _Nonnull stop) {
-//            if (![marker isEqual:self.selectedMarker]) {
-//                marker.map = nil;
-//                [self.markers removeObject:marker];
-//            }else {
-//                NSLog(@"marker %ld is selected Marker", idx);
-//            }
-//        }];
-//    }
-}
-
-- (void) unhighlightMarkerIfNeeded {
-    if (self.selectedMarker) {
-        NSMutableDictionary *dict = [self.selectedMarker userData];
-        self.selectedMarker.icon = [dict objectForKey:@"icon"];
-        self.selectedMarker = nil;
-    }
-}
-
-- (void) highlightMarker:(GMSMarker *)marker {
-    if (marker) {
-        NSMutableDictionary *userData = marker.userData;
-        marker.icon = [userData objectForKey:@"iconSelected"];
-        self.selectedMarker = marker;
-        self.venueDetailsViewController.venue = [userData objectForKey:@"venue"];
-    }
 }
 
 - (void) hideVenueDetailsView {
@@ -269,7 +239,7 @@
 }
 
 - (IBAction)closeBarButtonItemClick:(id)sender {
-    [self unhighlightMarkerIfNeeded];
+    self.mapViewModel.selectedMarker = nil;
     [self hideVenueDetailsView];
     [self.navigationItem setRightBarButtonItem:nil
                                       animated:true];
@@ -306,11 +276,8 @@
     if (![marker userData]) {
         return YES;
     }
-    if ([marker isEqual:self.selectedMarker]) {
-        return YES;
-    }
-    [self unhighlightMarkerIfNeeded];
-    [self highlightMarker:marker];
+    self.mapViewModel.selectedMarker = marker;
+    self.venueDetailsViewController.venue = [self.mapViewModel selectedVenue];
     [self showVenueDetailsView];
     [self.navigationItem setRightBarButtonItem:self.closeBarButtonItem
                                       animated:true];
@@ -318,12 +285,9 @@
 }
 
 - (void) mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
-    NSLog(@"didTapAtCoordinate");
-    if (self.selectedMarker) {
-        [self hideVenueDetailsView];
-        [self.navigationItem setRightBarButtonItem:nil animated:YES];
-    }
-    [self unhighlightMarkerIfNeeded];
+    [self hideVenueDetailsView];
+    [self.navigationItem setRightBarButtonItem:nil animated:YES];
+    self.mapViewModel.selectedMarker = nil;
 }
 
 - (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture {

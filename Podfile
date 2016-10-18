@@ -14,6 +14,8 @@ target 'Candystore' do
 
     pod 'SDWebImage', '~>3.8'
 
+    pod 'BlocksKit'
+
     target 'CandystoreTests' do
         inherit! :search_paths
         # Pods for testing

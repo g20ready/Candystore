@@ -7,7 +7,34 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <NSArray+BlocksKit.h>
+#import "FSVenuesResponseDTO.h"
 
-@interface MapViewModel : NSObject
+#import "Candystore-Swift.h"
+
+@import GoogleMaps;
+
+@interface MapViewModel : NSObject {
+    GMSMarker *_selectedMarker;
+}
+
+#pragma mark Properties
+
+@property (nonatomic, strong) NSMutableDictionary *markers;
+
+#pragma mark Blocks
+
+typedef void (^markerUpdateFinished)(NSArray<GMSMarker*> *markersAdded, NSArray<GMSMarker*> *markersRemoved);
+
+#pragma mark Interface
+
+- (GMSMarker *)selectedMarker;
+- (void) setSelectedMarker:(GMSMarker *)marker;
+
+- (FSVenueDTO *)selectedVenue;
+
+- (void) updateMarkersFromVenues:(NSArray<FSVenueDTO*>*) venues withFinishedBlock:(markerUpdateFinished) markersUpdatedBlock;
+
+
 
 @end

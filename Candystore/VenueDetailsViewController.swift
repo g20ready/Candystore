@@ -13,7 +13,13 @@ class VenueDetailsViewController: UIViewController {
 
     // MARK: - Properties
     var venue: FSVenueDTO! {
-        didSet (newVenue) {
+        didSet {
+            //If its the same object assigned
+            if (venue != nil &&
+                oldValue != nil &&
+                venue.id == oldValue.id) {
+                return;
+            }
             self.refreshUI()
         }
     }
