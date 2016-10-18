@@ -10,6 +10,8 @@
 
 @implementation MapViewModel
 
+@synthesize shouldRefresh;
+
 #pragma mark Init
 
 - (id) init {
@@ -62,12 +64,10 @@
 #pragma mark Getters & Setters
 
 - (GMSMarker *)selectedMarker {
-    NSLog(@"selectedMarker");
     return _selectedMarker;
 }
 
 - (void) setSelectedMarker:(GMSMarker *)marker {
-    NSLog(@"setSelectedMarker");
     if (_selectedMarker) {
         [self unhilightMarker:_selectedMarker];
     }

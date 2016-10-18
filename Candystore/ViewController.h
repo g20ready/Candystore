@@ -44,8 +44,6 @@
 
 @property (nonatomic, strong) MapViewModel *mapViewModel;
 
-@property (nonatomic, assign) BOOL shouldRefresh;
-
 @property (nonatomic, strong) NSURLSessionDataTask *fetchVenuesRequest;
 
 @end

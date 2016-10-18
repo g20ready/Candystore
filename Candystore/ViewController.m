@@ -152,20 +152,16 @@
             NSLog(@"Error fetching candy stores : %@", error.localizedDescription);
             return;
         }
-        NSLog(@"fetched venues");
+        
         [[MarkerManager shared] downloadCategoryImagesWithVenues:venues onFinishedDownloading:^{
             [self.mapViewModel updateMarkersFromVenues:venues withFinishedBlock:^(NSArray<GMSMarker *> *markersAdded, NSArray<GMSMarker *> *markersRemoved) {
-                
-                NSLog(@"downloaded category icons");
-                
+                NSLog(@"%ld marsersAdded, %ld markersRemoved from a total of %ld venues", markersAdded.count, markersRemoved.count, venues.count);
                 [markersAdded enumerateObjectsUsingBlock:^(GMSMarker * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     obj.map = self.mapView;
                 }];
-                NSLog(@"added markers");
                 [markersRemoved enumerateObjectsUsingBlock:^(GMSMarker * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     obj.map = nil;
                 }];
-                NSLog(@"removed markers");
             }];
         }];
         
@@ -182,26 +178,6 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self
                                              selector:@selector(refreshVenues)
                                                object:nil];
-}
-
-- (void)addMarkersFromVenues:(NSArray<FSVenueDTO*> *) venues {
-    NSLog(@"addMarkersFromVenues");
-//    [venues enumerateObjectsUsingBlock:^(FSVenueDTO * _Nonnull venue, NSUInteger idx, BOOL * _Nonnull stop) {
-//        if (self.selectedMarker) {
-//            NSDictionary *userDate = self.selectedMarker.userData;
-//            FSVenueDTO *selectedMarkerVenue = [userDate objectForKey:@"venue"];
-//            if ([selectedMarkerVenue.id isEqualToString:venue.id]) {
-//                return;
-//            }
-//        }
-//        GMSMarker *marker = [[MarkerManager shared] getMarkerWithVenue:venue];
-//        marker.map = mapView;
-//    }];
-}
-
-- (void)clearMarkers {
-    NSLog(@"Clearing Markers");
-    [self.mapView clear];
 }
 
 - (void) hideVenueDetailsView {
@@ -241,7 +217,10 @@
 #pragma mark NavigationItemHandlers
 
 - (IBAction)homeBarButtonItemClick:(id)sender {
-    NSLog(@"homeBarButtonItemClick");
+    if (self.locationManager.location) {
+        CLLocationCoordinate2D coordinate = self.locationManager.location.coordinate;
+        [self zoomAtCurrentLocation:coordinate];
+    }
 }
 
 - (IBAction)closeBarButtonItemClick:(id)sender {
@@ -257,10 +236,15 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     if (locations && locations.lastObject) {
         CLLocationCoordinate2D coordinate = locations.lastObject.coordinate;
-        NSLog(@"didUpdateLocation [%f, %f]",
-              coordinate.latitude, coordinate.longitude);
+        
+        
         [self addCurrentLocationMarker:coordinate];
         [self loadAddressAtCoordinate:coordinate];
+        
+        //We explicitly refresh when receiving location
+        //and moving camera to it
+        NSLog(@"Received Location");
+        self.mapViewModel.shouldRefresh = YES;
         [self zoomAtCurrentLocation:coordinate];
     }
 }
@@ -297,14 +281,15 @@
 }
 
 - (void)mapView:(GMSMapView *)mapView willMove:(BOOL)gesture {
-    NSLog(@"moved");
-    self.shouldRefresh = gesture;
+    self.mapViewModel.shouldRefresh = gesture;
 }
 
-- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
-    if (self.shouldRefresh) {
-        NSLog(@"Refreshing");
-        self.shouldRefresh = false;
+- (void)mapView:(GMSMapView *)mapView idleAtCameraPosition:(GMSCameraPosition *)position {
+    NSLog(@"idleAtCameraPosition");
+    if (self.mapViewModel.shouldRefresh) {
+        NSLog(@"refreshing");
+        self.mapViewModel.shouldRefresh = NO;
+        [self cancelRefreshVenues];
         [self performSelector:@selector(refreshVenues)
                    withObject:nil
                    afterDelay:1.5f];

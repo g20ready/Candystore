@@ -20,6 +20,8 @@
 
 #pragma mark Properties
 
+@property (nonatomic, assign) BOOL shouldRefresh;
+
 @property (nonatomic, strong) NSMutableDictionary *markers;
 
 #pragma mark Blocks
